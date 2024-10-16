@@ -1,6 +1,6 @@
 {
-    "name": "NomDuJeu.Core",
-    "rootNamespace": "NomDuJeu.Core",
+    "name": "CyberEnigma.Core",
+    "rootNamespace": "CyberEnigma.Core",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,6 +1,6 @@
 {
-    "name": "NomDuJeu.Editor",
-    "rootNamespace": "NomDuJeu.Editor",
+    "name": "CyberEnigma.Editor",
+    "rootNamespace": "CyberEnigma.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
