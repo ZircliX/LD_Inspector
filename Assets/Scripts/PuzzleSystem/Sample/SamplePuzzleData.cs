@@ -8,10 +8,12 @@ namespace PuzzleSystem.Sample
     {
         public override void Begin()
         {
+            
         }
 
         public override void End(bool isSuccess)
         {
+            
         }
     }
 }
