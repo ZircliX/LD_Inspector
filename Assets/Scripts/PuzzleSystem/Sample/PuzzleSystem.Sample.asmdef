@@ -2,7 +2,8 @@
     "name": "PuzzleSystem.Sample",
     "rootNamespace": "PuzzleSystem.Sample",
     "references": [
-        "GUID:9dc875daa0946fd4ea369ce213932c25"
+        "GUID:9dc875daa0946fd4ea369ce213932c25",
+        "GUID:7f6fdd18b438ff245b7f869ddfb77b44"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

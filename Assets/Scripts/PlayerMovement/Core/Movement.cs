@@ -13,17 +13,16 @@ namespace PlayerMovement.Core
         
         private float verticalInput, horizontalInput;
         private Vector3 moveDirection;
-        private bool isMoving;
-        private bool isRunning;
+        
+        private bool isMoving, isRunning;
+        internal bool isZooming;
 
         [SerializeField] private Transform orientation;
         private Rigidbody playerRB;
-        private CameraZoom cameraZoom;
 
         private void Awake()
         {
             playerRB = GetComponent<Rigidbody>();
-            cameraZoom = GetComponent<CameraZoom>();
         }
 
         private void FixedUpdate()
@@ -32,7 +31,7 @@ namespace PlayerMovement.Core
 
             if (isMoving)
             {
-                float speed = cameraZoom.isZooming ? zoomSpeed : (isRunning ? runSpeed : walkSpeed);
+                float speed = isZooming ? zoomSpeed : (isRunning ? runSpeed : walkSpeed);
                 
                 playerRB.AddForce(moveDirection * (speed * 10f), ForceMode.Force);
             }
@@ -41,7 +40,6 @@ namespace PlayerMovement.Core
                 playerRB.velocity *= 0.995f;
             }
         }
-
         
         void SwitchContextPhase(InputAction.CallbackContext context, Action<bool> myBool)
         {

@@ -4,11 +4,10 @@ using UnityEngine.InputSystem;
 
 public class CameraZoom : MonoBehaviour
 {
-    [HideInInspector]
     public bool isZooming { get; private set; }
 
     [SerializeField]
-    private float zoomSpeed, noZoomSpeed;
+    private float zoomSpeed, UnzoomSpeed;
     [SerializeField]
     private float maxZoom, defaultZoom;
 
@@ -32,7 +31,7 @@ public class CameraZoom : MonoBehaviour
             {
                 StopCoroutine(zoomCoroutine);
             }
-            zoomCoroutine = StartCoroutine(LerpZoom(defaultZoom, noZoomSpeed));
+            zoomCoroutine = StartCoroutine(LerpZoom(defaultZoom, UnzoomSpeed));
         }
     }
 
