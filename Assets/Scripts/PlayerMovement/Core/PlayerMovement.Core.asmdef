@@ -3,6 +3,7 @@
     "rootNamespace": "PlayerMovement.Core",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:7f6fdd18b438ff245b7f869ddfb77b44",
         "GUID:9dc875daa0946fd4ea369ce213932c25"
     ],
     "includePlatforms": [],

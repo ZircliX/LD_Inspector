@@ -10,6 +10,7 @@ namespace PlayerMovement.Core
         [SerializeField] private float zoomSpeed;
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
+        internal float additionalSpeed;
         
         private float verticalInput, horizontalInput;
         private Vector3 moveDirection;
@@ -33,7 +34,7 @@ namespace PlayerMovement.Core
             {
                 float speed = isZooming ? zoomSpeed : (isRunning ? runSpeed : walkSpeed);
                 
-                playerRB.AddForce(moveDirection * (speed * 10f), ForceMode.Force);
+                playerRB.AddForce(moveDirection * ((speed + additionalSpeed) * 10f), ForceMode.Force);
             }
             else
             {

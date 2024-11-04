@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PuzzleSystem.Sample
 {
-    public class PuzzleSampleManager : MonoBehaviour
+    public class SamplePuzzleManager : MonoBehaviour
     {
         [SerializeField] private SamplePuzzleData puzzleData;
 
@@ -24,13 +24,15 @@ namespace PuzzleSystem.Sample
         private void Start()
         {
             puzzle = puzzleData.ToPuzzle();
-            PuzzleManager.Instance.StartPuzzle(puzzle);
         }
 
         private void LateUpdate()
         {
             if (Input.GetKey(puzzleData.keyCode))
                 puzzle.SetDirty();
+
+            if (Input.GetKey(KeyCode.R)) 
+                PuzzleManager.Instance.StartPuzzle(puzzle);
         }
 
         private void OnPuzzleStarted(Puzzle puzzle)
