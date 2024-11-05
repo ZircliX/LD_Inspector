@@ -16,13 +16,10 @@ namespace PuzzleSystem.Core.Data
         
         public bool AreAllConditionCompleted()
         {
-            for (var i = 0; i < Conditions.Length; i++)
+            foreach (ConditionData condition in Conditions)
             {
-                ConditionData condition = Conditions[i];
-                if (condition != null)
-                {
-                    if (!condition.IsComplete()) return false;
-                }
+                if (condition == null) continue;
+                if (!condition.IsComplete()) return false;
             }
 
             return true;

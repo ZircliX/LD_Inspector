@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class CameraZoom : MonoBehaviour
 {
-    public bool isZooming { get; private set; }
+    public bool IsZooming { get; private set; }
 
     [SerializeField]
     private float zoomSpeed, UnzoomSpeed;
@@ -17,7 +17,7 @@ public class CameraZoom : MonoBehaviour
 
     private void Update()
     {
-        if (isZooming)
+        if (IsZooming)
         {
             if (zoomCoroutine != null)
             {
@@ -47,6 +47,6 @@ public class CameraZoom : MonoBehaviour
 
     public void Zoom(InputAction.CallbackContext context)
     {
-        isZooming = context.performed;
+        IsZooming = context.performed;
     }
 }

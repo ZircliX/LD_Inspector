@@ -11,14 +11,13 @@ namespace PlayerMovement.Core
 
         private void Awake()
         {
+            //Get Components
             movementScript = GetComponent<Movement>();
             cameraZoomScript = GetComponent<CameraZoom>();
             mouseMovementScript = GetComponent<MouseMovement>();
-        }
-        
-        private void OnZoom()
-        {
-            movementScript.isZooming = cameraZoomScript.isZooming;
+
+            //References Assignations
+            movementScript.cameraZoom = cameraZoomScript;
         }
 
         private void OnEnable()

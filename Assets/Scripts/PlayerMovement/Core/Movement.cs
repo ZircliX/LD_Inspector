@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -11,12 +10,14 @@ namespace PlayerMovement.Core
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
         internal float additionalSpeed;
-        
+
+        [SerializeField] private float jumpForce;
+
         private float verticalInput, horizontalInput;
         private Vector3 moveDirection;
-        
+
         private bool isMoving, isRunning;
-        internal bool isZooming;
+        internal CameraZoom cameraZoom;
 
         [SerializeField] private Transform orientation;
         private Rigidbody playerRB;
@@ -32,8 +33,13 @@ namespace PlayerMovement.Core
 
             if (isMoving)
             {
-                float speed = isZooming ? zoomSpeed : (isRunning ? runSpeed : walkSpeed);
-                
+                float speed = (cameraZoom.IsZooming, isRunning) switch
+                {
+                    (true, _) => zoomSpeed,
+                    (false, true) => runSpeed,
+                    _ => walkSpeed
+                };
+
                 playerRB.AddForce(moveDirection * ((speed + additionalSpeed) * 10f), ForceMode.Force);
             }
             else
@@ -41,37 +47,37 @@ namespace PlayerMovement.Core
                 playerRB.velocity *= 0.995f;
             }
         }
-        
-        void SwitchContextPhase(InputAction.CallbackContext context, Action<bool> myBool)
+
+        private static bool SwitchContextPhase(InputAction.CallbackContext context)
         {
-            switch (context.phase)
+            return context.phase switch
             {
-                case InputActionPhase.Started:
-                    myBool(true);
-                    break;
-
-                case InputActionPhase.Performed:
-                    myBool(context.interaction is not SlowTapInteraction);
-                    break;
-
-                case InputActionPhase.Canceled:
-                    myBool(false);
-                    break;
-            }
+                InputActionPhase.Started => true,
+                InputActionPhase.Performed => context.interaction is not SlowTapInteraction,
+                InputActionPhase.Canceled => false,
+                _ => false,
+            };
         }
 
         public void Run(InputAction.CallbackContext context)
         {
-            SwitchContextPhase(context, endValue => isRunning = endValue);
+            isRunning = SwitchContextPhase(context);
         }
-        
+
         public void MoveInput(InputAction.CallbackContext context)
         {
-            var keyboardInput = context.ReadValue<Vector2>();
+            Vector2 keyboardInput = context.ReadValue<Vector2>();
             verticalInput = keyboardInput.y;
             horizontalInput = keyboardInput.x;
+
+            isMoving = SwitchContextPhase(context);
+        }
+
+        public void Jump(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
             
-            SwitchContextPhase(context, endValue => isMoving = endValue);
+            playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 }

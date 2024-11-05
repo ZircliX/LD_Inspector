@@ -16,8 +16,6 @@ namespace PlayerMovement.Core
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
-            Application.targetFrameRate = 60;
         }
         
         private void Update()
