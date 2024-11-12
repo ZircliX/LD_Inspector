@@ -6,6 +6,7 @@ namespace PlayerMovement.Core
 {
     public class Movement : MonoBehaviour
     {
+        [SerializeField] private float SPEED_MULTIPLIER;
         [SerializeField] private float zoomSpeed;
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
@@ -40,11 +41,30 @@ namespace PlayerMovement.Core
                     _ => walkSpeed
                 };
 
-                playerRB.AddForce(moveDirection * ((speed + additionalSpeed) * 10f), ForceMode.Force);
+                playerRB.AddForce(moveDirection * ((speed + additionalSpeed) * SPEED_MULTIPLIER * Time.deltaTime), ForceMode.Force);
+                Stairs();
             }
             else
             {
                 playerRB.velocity *= 0.995f;
+            }
+        }
+        
+        private void Stairs()
+        {
+            Vector3 stairRayOrigin = transform.position + Vector3.up * 0.1f;
+            Vector3 stairRayDirection = moveDirection.normalized;
+
+            if (Physics.Raycast(stairRayOrigin, stairRayDirection, out RaycastHit hit, 0.5f))
+            {
+                float stairAngle = Vector3.Angle(hit.normal, Vector3.up);
+                Debug.Log($"{stairAngle}");
+                
+                if (stairAngle >= 90f)
+                {
+                    Vector3 stairClimbForce = Vector3.up * (playerRB.velocity.magnitude * 0.20f);
+                    playerRB.AddForce(stairClimbForce, ForceMode.Impulse);
+                }
             }
         }
 

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a79b569aa455b4589a294d65ecd2c9, type: 3}
+  m_Name: Note
+  m_EditorClassIdentifier: 
+  Name: "Po\xE8me n\xB01"
+  ItemGroup: 1
+  Description: "Un po\xE8me sur la vie de mon chien"
+  ImageDisplay: {fileID: 21300000, guid: e0239a3c2a2bf8e4a84a35759ea0bcef, type: 3}

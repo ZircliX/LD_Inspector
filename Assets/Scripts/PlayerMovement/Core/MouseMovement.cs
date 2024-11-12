@@ -11,12 +11,6 @@ namespace PlayerMovement.Core
         
         private float mouseX, mouseY;
         private float rotationX, rotationY;
-
-        private void Awake()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
         
         private void Update()
         {

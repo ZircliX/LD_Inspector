@@ -1,4 +1,6 @@
+using LTX.ChanneledProperties;
 using PuzzleSystem.Core;
+using TheLastWitness.Core;
 using UnityEngine;
 
 namespace PlayerMovement.Core
@@ -24,12 +26,18 @@ namespace PlayerMovement.Core
         {
             PuzzleManager.Instance.OnPuzzleStarted += OnPuzzleStarted;
             PuzzleManager.Instance.OnPuzzleStopped += OnPuzzleStopped;
+            
+            GameController.CursorVisibility.AddPriority(this, PriorityTags.Small, false);
+            GameController.CursorLockMode.AddPriority(this, PriorityTags.Small, CursorLockMode.Locked);
         }
 
         private void OnDisable()
         {
             PuzzleManager.Instance.OnPuzzleStarted -= OnPuzzleStarted;
             PuzzleManager.Instance.OnPuzzleStopped -= OnPuzzleStopped;
+
+            GameController.CursorVisibility.RemovePriority(this);
+            GameController.CursorLockMode.RemovePriority(this);
         }
         
         private void OnPuzzleStarted(Puzzle puzzle)

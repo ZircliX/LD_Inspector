@@ -7,7 +7,7 @@ public class CameraZoom : MonoBehaviour
     public bool IsZooming { get; private set; }
 
     [SerializeField]
-    private float zoomSpeed, UnzoomSpeed;
+    private float zoomSpeed, unzoomSpeed;
     [SerializeField]
     private float maxZoom, defaultZoom;
 
@@ -31,7 +31,7 @@ public class CameraZoom : MonoBehaviour
             {
                 StopCoroutine(zoomCoroutine);
             }
-            zoomCoroutine = StartCoroutine(LerpZoom(defaultZoom, UnzoomSpeed));
+            zoomCoroutine = StartCoroutine(LerpZoom(defaultZoom, unzoomSpeed));
         }
     }
 
