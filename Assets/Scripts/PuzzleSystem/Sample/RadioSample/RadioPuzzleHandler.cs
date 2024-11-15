@@ -7,7 +7,7 @@ namespace PuzzleSystem.Sample
     {
         [SerializeField] public Radio radio;
         [SerializeField] public Battery battery;
-        [Space] 
+        [Space(10)]
         [SerializeField] private AudioClip clip;
         
         private RadioPuzzle puzzle;
