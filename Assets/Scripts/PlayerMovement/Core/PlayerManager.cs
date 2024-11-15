@@ -40,12 +40,12 @@ namespace PlayerMovement.Core
             GameController.CursorLockMode.RemovePriority(this);
         }
         
-        private void OnPuzzleStarted(Puzzle puzzle)
+        private void OnPuzzleStarted(IPuzzleRunner puzzleRunner)
         {
             movementScript.additionalSpeed = 5f;
         }
         
-        private void OnPuzzleStopped(Puzzle puzzle)
+        private void OnPuzzleStopped(IPuzzleRunner puzzleRunner)
         {
             movementScript.additionalSpeed = 0f;
         }

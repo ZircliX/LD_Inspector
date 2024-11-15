@@ -13,7 +13,6 @@ namespace PuzzleSystem.Sample
         public void SetBattery(Battery batteryToGive)
         {
             this.battery = batteryToGive;
-            RadioSetup.Instance.SetDirty();
         }
 
         public void PlayClip(AudioClip audioClip)
