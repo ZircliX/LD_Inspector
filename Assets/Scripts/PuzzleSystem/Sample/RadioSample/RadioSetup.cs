@@ -1,27 +1,30 @@
-using LTX.Singletons;
 using PuzzleSystem.Core;
 using UnityEngine;
 
 namespace PuzzleSystem.Sample
 {
-    public class RadioSetup : MonoSingleton<RadioSetup>
+    public class RadioPuzzleHandler : MonoBehaviour, IPuzzleHandler<RadioContext>
     {
         [SerializeField] public Radio radio;
         [SerializeField] public Battery battery;
-        [SerializeField] public PlayerExample player;
-        [SerializeField] private RadioPuzzleData radioPuzzleData;
+        [Space] 
+        [SerializeField] private AudioClip clip;
         
-        private Puzzle puzzle;
+        private RadioPuzzle puzzle;
 
         private void Start()
         {
-            puzzle = new Puzzle(radioPuzzleData);
-            PuzzleManager.Instance.StartPuzzle(puzzle);
+            puzzle = new RadioPuzzle(clip);
+            PuzzleManager.Instance.StartPuzzle(puzzle, this);
         }
 
-        public void SetDirty()
+        public RadioContext GetContext()
         {
-            puzzle.SetDirty();
+            return new RadioContext
+            {
+                battery = battery,
+                radio = radio
+            };
         }
     }
 }
