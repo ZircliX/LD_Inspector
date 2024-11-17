@@ -24,30 +24,14 @@ namespace PlayerMovement.Core
 
         private void OnEnable()
         {
-            PuzzleManager.Instance.OnPuzzleStarted += OnPuzzleStarted;
-            PuzzleManager.Instance.OnPuzzleStopped += OnPuzzleStopped;
-            
             GameController.CursorVisibility.AddPriority(this, PriorityTags.Small, false);
             GameController.CursorLockMode.AddPriority(this, PriorityTags.Small, CursorLockMode.Locked);
         }
 
         private void OnDisable()
         {
-            PuzzleManager.Instance.OnPuzzleStarted -= OnPuzzleStarted;
-            PuzzleManager.Instance.OnPuzzleStopped -= OnPuzzleStopped;
-
             GameController.CursorVisibility.RemovePriority(this);
             GameController.CursorLockMode.RemovePriority(this);
-        }
-        
-        private void OnPuzzleStarted(IPuzzleRunner puzzleRunner)
-        {
-            movementScript.additionalSpeed = 5f;
-        }
-        
-        private void OnPuzzleStopped(IPuzzleRunner puzzleRunner)
-        {
-            movementScript.additionalSpeed = 0f;
         }
     }
 }

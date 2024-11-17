@@ -5,8 +5,9 @@ namespace PuzzleSystem.Sample
 {
     public class RadioPuzzleHandler : MonoBehaviour, IPuzzleHandler<RadioContext>
     {
-        [SerializeField] public Radio radio;
-        [SerializeField] public Battery battery;
+        public Radio radio;
+        public Battery battery;
+        
         [Space(10)]
         [SerializeField] private AudioClip clip;
         

@@ -17,7 +17,8 @@ namespace Menu
             None = -1,
             Pause = 0,
             Options = 1,
-            Inventory = 2
+            Inventory = 2,
+            TableauInput = 3
         }
 
         public void OnInventoryInput(InputAction.CallbackContext context)
@@ -53,7 +54,7 @@ namespace Menu
             SwitchMenuState((MenuState)index);
         }
 
-        private void SwitchMenuState(MenuState newMenuState)
+        public void SwitchMenuState(MenuState newMenuState)
         {
             foreach (GameObject panel in PanelList)
             {
@@ -79,8 +80,12 @@ namespace Menu
                     GameController.CursorVisibility.ChangeChannelPriority(this, PriorityTags.None);
                     GameController.CursorLockMode.ChangeChannelPriority(this, PriorityTags.None);
                     Time.timeScale = 1f;
-
                     return;
+                case MenuState.TableauInput:
+                    Time.timeScale = 0f;
+                    GameController.CursorVisibility.ChangeChannelPriority(this, PriorityTags.High);
+                    GameController.CursorLockMode.ChangeChannelPriority(this, PriorityTags.High);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
