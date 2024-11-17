@@ -8,35 +8,11 @@ namespace PuzzleSystem.Sample
     {
         [SerializeField] private MenuManager menu;
 
-        private bool isPuzzleActive;
-
-        private void OnEnable()
+        public void PuzzleState(IPuzzleRunner puzzleRunner, bool puzzleState)
         {
-            PuzzleManager.Instance.OnPuzzleStopped += PuzzleState;
-            PuzzleManager.Instance.OnPuzzleStarted += PuzzleState;
-        }
-        
-        private void OnDisable()
-        {
-            PuzzleManager.Instance.OnPuzzleStopped -= PuzzleState;
-            PuzzleManager.Instance.OnPuzzleStarted -= PuzzleState;
-        }
+            if (puzzleRunner.Puzzle.GetType() != typeof(TableauPuzzle)) return;
 
-        private void PuzzleState(IPuzzleRunner puzzleRunner)
-        {
-            if (puzzleRunner.Puzzle.GetType() == typeof(TableauPuzzle))
-            {
-                isPuzzleActive = !isPuzzleActive;
-
-                if (isPuzzleActive)
-                {
-                    menu.SwitchMenuState(MenuManager.MenuState.TableauInput);
-                }
-                else
-                {
-                    menu.SwitchMenuState(MenuManager.MenuState.None);
-                }
-            }
+            menu.SwitchMenuState(puzzleState ? MenuManager.MenuState.TableauInput : MenuManager.MenuState.None);
         }
     }
 }
