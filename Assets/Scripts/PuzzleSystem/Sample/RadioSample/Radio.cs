@@ -4,11 +4,10 @@ namespace PuzzleSystem.Sample
 {
     public class Radio : MonoBehaviour
     {
-        public Battery battery;
+        private Battery battery;
         public bool HasBattery => battery != null;
-
-        [SerializeField]
-        private AudioSource audioSource;
+        
+        [SerializeField] private AudioSource audioSource;
 
         public void SetBattery(Battery batteryToGive)
         {
