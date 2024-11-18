@@ -1,6 +1,6 @@
 using System;
 using LTX.ChanneledProperties;
-using TheLastWitness.Core;
+using CyberEnigma.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
