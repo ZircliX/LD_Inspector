@@ -1,7 +1,7 @@
 using LTX.ChanneledProperties;
 using UnityEngine;
 
-namespace TheLastWitness.Core
+namespace CyberEnigma.Core
 {
     public static class GameController
     {
