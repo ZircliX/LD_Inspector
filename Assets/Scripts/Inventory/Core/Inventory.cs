@@ -8,7 +8,6 @@ namespace Inventory.Core
     public class Inventory : MonoSingleton<Inventory>
     {
         public Dictionary<ItemGroup, List<InventoryElement>> PlayerInventory { get; private set; }
-        public InventoryElement[] elements;
 
         public event Action<InventoryElement> OnElementDisplay;
         
@@ -22,27 +21,14 @@ namespace Inventory.Core
                 { ItemGroup.Note, new List<InventoryElement>() },
                 { ItemGroup.Image, new List<InventoryElement>() }
             };
-
-            for (int i = 0; i < 5; i++)
-            {
-                PlayerInventory[ItemGroup.Key].Add(elements[0]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                PlayerInventory[ItemGroup.Note].Add(elements[1]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                PlayerInventory[ItemGroup.Image].Add(elements[2]);
-            }
         }
 
-        private void AddItem(InventoryElement itemToAdd)
+        public void AddItem(InventoryElement itemToAdd)
         {
             PlayerInventory[itemToAdd.ItemGroup].Add(itemToAdd);
         }
 
-        private void RemoveItem(InventoryElement itemToRemove)
+        public void RemoveItem(InventoryElement itemToRemove)
         {
             PlayerInventory[itemToRemove.ItemGroup].Remove(itemToRemove);
         }
