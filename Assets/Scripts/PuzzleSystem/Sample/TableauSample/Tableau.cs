@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 namespace PuzzleSystem.Sample
@@ -10,7 +11,7 @@ namespace PuzzleSystem.Sample
         
         public void PuzzleEnd()
         {
-            Vector3 targetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2f);
+            Vector3 targetPos = new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z);
             transform.DOMove(targetPos, 1.5f);
         }
         
