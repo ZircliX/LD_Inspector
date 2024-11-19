@@ -16,9 +16,8 @@ namespace Menu
         {
             None = -1,
             Pause = 0,
-            Options = 1,
-            Inventory = 2,
-            TableauInput = 3
+            Inventory = 1,
+            TableauInput = 2
         }
 
         public void OnInventoryInput(InputAction.CallbackContext context)
@@ -35,11 +34,7 @@ namespace Menu
 
         public void OnPausedInput(InputAction.CallbackContext context)
         {
-            if (menuState == MenuState.Options)
-            {
-                SwitchMenuState(MenuState.Pause);
-            }
-            else if (menuState == MenuState.Pause)
+            if (menuState == MenuState.Pause)
             {
                 SwitchMenuState(MenuState.None);
             }
@@ -68,8 +63,6 @@ namespace Menu
                     GameController.CursorVisibility.ChangeChannelPriority(this, PriorityTags.High);
                     GameController.CursorLockMode.ChangeChannelPriority(this, PriorityTags.High);
                     Time.timeScale = 0f;
-                    break;
-                case MenuState.Options:
                     break;
                 case MenuState.Inventory:
                     Time.timeScale = 0f;

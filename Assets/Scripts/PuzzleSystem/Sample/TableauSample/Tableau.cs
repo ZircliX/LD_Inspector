@@ -1,5 +1,4 @@
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
 
 namespace PuzzleSystem.Sample
@@ -7,19 +6,19 @@ namespace PuzzleSystem.Sample
     public class Tableau : MonoBehaviour
     {
         public GameObject instructions;
+        [SerializeField] private Transform tableau;
         public bool isActive;
         
         public void PuzzleEnd()
         {
-            Vector3 targetPos = new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z);
-            transform.DOMove(targetPos, 1.5f);
+            Vector3 targetPos = new Vector3(tableau.position.x, tableau.position.y, tableau.position.z + 2.5f);
+            tableau.DOMove(targetPos, 1.5f);
         }
         
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player") && isActive)
             {
-                Debug.Log("In Area");
                 instructions.SetActive(true);
                 
                 TableauPlayer player = other.GetComponent<TableauPlayer>();

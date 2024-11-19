@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: "Po\xEAme"
   ItemGroup: 1
   Description: "Po\xEAme du tableau"
-  ImageDisplay: {fileID: 21300000, guid: aae910527c1e2c045a2055147cf934c5, type: 3}
+  ImageDisplay: {fileID: 21300000, guid: a483b39e7d24f7e45a0faf0afc460b37, type: 3}
