@@ -22,31 +22,28 @@ namespace Menu
 
         public void OnInventoryInput(InputAction.CallbackContext context)
         {
+            if (!context.performed) return;
+            
             if (menuState == MenuState.None)
             {
                 SwitchMenuState(MenuState.Inventory);
+                return;
             }
-            else if (menuState == MenuState.Inventory)
-            {
-                SwitchMenuState(MenuState.None);
-            }
+            
+            SwitchMenuState(MenuState.None);
         }
 
         public void OnPausedInput(InputAction.CallbackContext context)
         {
-            if (menuState == MenuState.Pause)
+            if (!context.performed) return;
+            
+            if (menuState is MenuState.Pause or MenuState.Inventory or MenuState.TableauInput)
             {
                 SwitchMenuState(MenuState.None);
+                return;
             }
-            else
-            {
-                SwitchMenuState(MenuState.Pause);
-            }
-        }
-
-        public void OnStateSwitch(int index)
-        {
-            SwitchMenuState((MenuState)index);
+            
+            SwitchMenuState(MenuState.Pause);
         }
 
         public void SwitchMenuState(MenuState newMenuState)

@@ -26,6 +26,7 @@ namespace Inventory.Core
         public void AddItem(InventoryElement itemToAdd)
         {
             PlayerInventory[itemToAdd.ItemGroup].Add(itemToAdd);
+            print("Item added");
         }
 
         public void RemoveItem(InventoryElement itemToRemove)

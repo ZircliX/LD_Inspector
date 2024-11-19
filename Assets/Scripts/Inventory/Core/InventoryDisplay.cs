@@ -18,7 +18,7 @@ namespace Inventory.Core
         [SerializeField] private GraphicRaycaster _graphicRaycaster;
         [SerializeField] private EventSystem _eventSystem;
 
-        private void Start()
+        private void OnEnable()
         {
             RefreshDisplay();
         }
@@ -40,16 +40,22 @@ namespace Inventory.Core
             newImage.sprite = item.ImageDisplay;
         }
 
+        private void ResetDisplay()
+        {
+            foreach (Transform child in contentParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
         private void RefreshDisplay()
         {
-            for (int i = 0; i < Inventory.Instance.PlayerInventory.Keys.Count; i++)
+            ResetDisplay();
+            
+            foreach (var group in Inventory.Instance.PlayerInventory.Keys)
             {
-                ItemGroup group = Inventory.Instance.PlayerInventory.Keys.ElementAt(i);
-                
-                for (int j = 0; j < Inventory.Instance.PlayerInventory[group].Count; j++)
+                foreach (var element in Inventory.Instance.PlayerInventory[group])
                 {
-                    InventoryElement element = Inventory.Instance.PlayerInventory[group][j];
-                    
                     CreateItemImage(element);
                 }
             }
