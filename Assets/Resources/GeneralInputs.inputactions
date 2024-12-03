@@ -2,7 +2,7 @@
     "name": "GeneralInputs",
     "maps": [
         {
-            "name": "Gameplay",
+            "name": "Movement",
             "id": "3656af34-6441-4c16-948f-27de32f7c78a",
             "actions": [
                 {
@@ -45,15 +45,6 @@
                     "name": "Zoom",
                     "type": "Button",
                     "id": "ff476796-b547-40ff-a852-f0a679f916f2",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OpenCodeInput",
-                    "type": "Button",
-                    "id": "9305614f-69c2-46a4-8e57-6d419a4e84e8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -159,17 +150,6 @@
                     "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "76ae3adc-1177-4690-a325-5ef8949d9764",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenCodeInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -216,6 +196,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Gameplay",
+            "id": "cc4a3e45-9280-4e08-9768-36bdb0f78455",
+            "actions": [
+                {
+                    "name": "OpenCodeInput",
+                    "type": "Button",
+                    "id": "5ae4281d-8a35-46c4-affc-88363de61548",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TakeObject",
+                    "type": "Button",
+                    "id": "ab90e0e1-f214-48dc-ae6d-b2df90b08621",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "67a5a31d-e8a6-4f90-930c-cc6aaefd44f3",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenCodeInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f2ba369-0733-4143-9e9c-c00a7890ef52",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TakeObject",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

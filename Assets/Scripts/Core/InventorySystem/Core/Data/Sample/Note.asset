@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43a79b569aa455b4589a294d65ecd2c9, type: 3}
-  m_Name: Poem
+  m_Name: Note
   m_EditorClassIdentifier: 
-  Name: "Po\xEAme"
-  ItemGroup: 1
-  Description: "Po\xEAme du tableau"
-  ImageDisplay: {fileID: 21300000, guid: a483b39e7d24f7e45a0faf0afc460b37, type: 3}
+  itemGroup: 1
+  itemImage: {fileID: 21300000, guid: e0239a3c2a2bf8e4a84a35759ea0bcef, type: 3}

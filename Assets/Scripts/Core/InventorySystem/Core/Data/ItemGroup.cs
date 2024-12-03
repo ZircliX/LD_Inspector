@@ -1,4 +1,4 @@
-namespace Inventory.Core.Data
+namespace CyberEnigma.Core.Inventory.Core.Data
 {
     public enum ItemGroup
     {

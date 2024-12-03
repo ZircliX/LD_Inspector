@@ -1,15 +1,18 @@
 using System;
 using System.Collections.Generic;
-using Inventory.Core.Data;
+using CyberEnigma.Core.Inventory.Core.Data;
 using LTX.Singletons;
+using UnityEngine;
 
-namespace Inventory.Core
+namespace CyberEnigma.Core.Inventory.Core
 {
     public class Inventory : MonoSingleton<Inventory>
     {
         public Dictionary<ItemGroup, List<InventoryElement>> PlayerInventory { get; private set; }
 
         public event Action<InventoryElement> OnElementDisplay;
+        public event Action<InventoryElement> OnElementAdded;
+        public event Action<InventoryElement> OnElementRemoved;
         
         protected override void Awake()
         {
@@ -23,19 +26,26 @@ namespace Inventory.Core
             };
         }
 
-        public void AddItem(InventoryElement itemToAdd)
+        public void AddItem(InventoryElement item)
         {
-            PlayerInventory[itemToAdd.ItemGroup].Add(itemToAdd);
-            print("Item added");
+            Debug.Log($"Added Item : {item.itemGroup}");
+            
+            PlayerInventory[item.itemGroup].Add(item);
+            OnElementAdded?.Invoke(item);
         }
 
-        public void RemoveItem(InventoryElement itemToRemove)
+        public void RemoveItem(InventoryElement item)
         {
-            PlayerInventory[itemToRemove.ItemGroup].Remove(itemToRemove);
+            Debug.Log($"Removed Item : {item.itemGroup}");
+            
+            PlayerInventory[item.itemGroup].Remove(item);
+            OnElementRemoved?.Invoke(item);
         }
 
         public void ShowElementInfos(InventoryElement element)
         {
+            Debug.Log($"Show Item : {element.itemGroup}");
+            
             OnElementDisplay?.Invoke(element);
         }
     }
