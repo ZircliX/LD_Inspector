@@ -1,40 +1,24 @@
 using DG.Tweening;
-using UnityEngine;
+using Menu;
+using PuzzleSystem.Core;
 
 namespace PuzzleSystem.Sample
 {
-    public class Tableau : MonoBehaviour
+    public class Tableau : Puzzle<TableauContext>
     {
-        public GameObject instructions;
-        [SerializeField] private Transform tableau;
-        public bool isActive;
-        
-        public void PuzzleEnd()
+        public override void Begin(ref TableauContext context)
         {
-            Vector3 targetPos = new Vector3(tableau.position.x, tableau.position.y, tableau.position.z + 2.5f);
-            tableau.DOMove(targetPos, 1.5f);
-        }
-        
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player") && isActive)
-            {
-                instructions.SetActive(true);
-                
-                TableauPlayer player = other.GetComponent<TableauPlayer>();
-                player.isInArea = true;
-            }
         }
 
-        private void OnTriggerExit(Collider other)
+        public override bool Refresh(ref TableauContext context)
         {
-            if (other.CompareTag("Player") && isActive)
-            {
-                instructions.SetActive(false);
-                
-                TableauPlayer player = other.GetComponent<TableauPlayer>();
-                player.isInArea = false;
-            }
+            return context.codeInput.text == context.code;
+        }
+
+        public override void End(ref TableauContext context, bool isSuccess)
+        {
+            context.tableau.DOMoveZ(2f, 2f);
+            MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None);
         }
     }
 }

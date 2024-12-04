@@ -1,99 +1,70 @@
 using System;
 using LTX.ChanneledProperties;
 using CyberEnigma.Core;
+using LTX.Singletons;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Menu
 {
-    public class MenuManager : MonoBehaviour
+    public class MenuManager : MonoSingleton<MenuManager>
     {
-        [SerializeField] private GameObject[] PanelList;
+        public event Action<MenuState> OnMenuChange;
 
-        public MenuState menuState;
-
+        public MenuState menuState { get; private set; } = MenuState.None;
         public enum MenuState
         {
             None = -1,
             Pause = 0,
             Inventory = 1,
-            TableauInput = 2
+            RequireInput = 2
+        }
+        
+        private void OnEnable()
+        {
+            GameController.CursorVisibility.AddPriority(this, PriorityTags.None, true);
+            GameController.CursorLockMode.AddPriority(this, PriorityTags.None, CursorLockMode.None);
+            
+            GameController.TimeScale.AddPriority(this, PriorityTags.None, 0f);
+        }
+
+        private void OnDisable()
+        {
+            GameController.CursorVisibility.RemovePriority(this);
+            GameController.CursorLockMode.RemovePriority(this);
+
+            GameController.TimeScale.RemovePriority(this);
         }
 
         public void OnInventoryInput(InputAction.CallbackContext context)
         {
             if (!context.performed) return;
-            
-            if (menuState == MenuState.None)
-            {
-                SwitchMenuState(MenuState.Inventory);
-                return;
-            }
-            
-            SwitchMenuState(MenuState.None);
+
+            SwitchMenuState(menuState == MenuState.None ? MenuState.Inventory : MenuState.None);
         }
 
         public void OnPausedInput(InputAction.CallbackContext context)
         {
             if (!context.performed) return;
-            
-            if (menuState is MenuState.Pause or MenuState.Inventory or MenuState.TableauInput)
-            {
-                SwitchMenuState(MenuState.None);
-                return;
-            }
-            
-            SwitchMenuState(MenuState.Pause);
+
+            SwitchMenuState(menuState is MenuState.Pause or MenuState.Inventory or MenuState.RequireInput
+                ? MenuState.None
+                : MenuState.Pause);
         }
 
         public void SwitchMenuState(MenuState newMenuState)
         {
-            foreach (GameObject panel in PanelList)
-            {
-                panel.SetActive(false);
-            }
-
             menuState = newMenuState;
-            switch (menuState)
-            {
-                case MenuState.Pause:
-                    GameController.CursorVisibility.ChangeChannelPriority(this, PriorityTags.High);
-                    GameController.CursorLockMode.ChangeChannelPriority(this, PriorityTags.High);
-                    Time.timeScale = 0f;
-                    break;
-                case MenuState.Inventory:
-                    Time.timeScale = 0f;
-                    GameController.CursorVisibility.ChangeChannelPriority(this, PriorityTags.High);
-                    GameController.CursorLockMode.ChangeChannelPriority(this, PriorityTags.High);
-                    break;
-                case MenuState.None:
-                    GameController.CursorVisibility.ChangeChannelPriority(this, PriorityTags.None);
-                    GameController.CursorLockMode.ChangeChannelPriority(this, PriorityTags.None);
-                    Time.timeScale = 1f;
-                    return;
-                case MenuState.TableauInput:
-                    Time.timeScale = 0f;
-                    GameController.CursorVisibility.ChangeChannelPriority(this, PriorityTags.High);
-                    GameController.CursorLockMode.ChangeChannelPriority(this, PriorityTags.High);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            PanelList[(int)menuState].SetActive(true);
+            OnMenuChange?.Invoke(newMenuState);
+            
+            GameController.CursorVisibility.ChangeChannelPriority(this, CheckPriorities());
+            GameController.CursorLockMode.ChangeChannelPriority(this, CheckPriorities());
+            GameController.TimeScale.ChangeChannelPriority(this, CheckPriorities());
         }
 
-        private void OnEnable()
+        private PriorityTags CheckPriorities()
         {
-            GameController.CursorVisibility.AddPriority(this, PriorityTags.None, true);
-            GameController.CursorLockMode.AddPriority(this, PriorityTags.None, CursorLockMode.None);
-        }
-
-        private void OnDisable()
-        {
-            //Enlever channel
-            GameController.CursorVisibility.RemovePriority(this);
-            GameController.CursorLockMode.RemovePriority(this);
+            return menuState == MenuState.None ? PriorityTags.None : PriorityTags.High;
         }
     }
 }
