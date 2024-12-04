@@ -1,3 +1,5 @@
+using DG.Tweening;
+using Menu;
 using PuzzleSystem.Core;
 
 namespace PuzzleSystem.Sample
@@ -6,17 +8,17 @@ namespace PuzzleSystem.Sample
     {
         public override void Begin(ref TableauContext context)
         {
-            throw new System.NotImplementedException();
         }
 
         public override bool Refresh(ref TableauContext context)
         {
-            throw new System.NotImplementedException();
+            return context.codeInput.text == context.code;
         }
 
         public override void End(ref TableauContext context, bool isSuccess)
         {
-            throw new System.NotImplementedException();
+            context.tableau.DOMoveZ(2f, 2f);
+            MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None);
         }
     }
 }

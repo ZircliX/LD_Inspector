@@ -29,6 +29,7 @@ namespace CyberEnigma.Core.Inventory.Core
         {
             Inventory.Instance.OnElementDisplay -= DisplayElement;
             Inventory.Instance.OnElementAdded -= AddElement;
+            Inventory.Instance.OnElementRemoved -= RemoveElement;
         }
 
         private void AddElement(InventoryElement element)
