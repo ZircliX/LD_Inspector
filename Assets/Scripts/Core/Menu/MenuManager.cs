@@ -9,7 +9,7 @@ namespace Menu
 {
     public class MenuManager : MonoSingleton<MenuManager>
     {
-        public event Action<MenuState> OnMenuChange;
+        public event Action<MenuState, GameObject> OnMenuChange;
 
         public MenuState menuState { get; private set; } = MenuState.None;
         public enum MenuState
@@ -40,7 +40,7 @@ namespace Menu
         {
             if (!context.performed) return;
 
-            SwitchMenuState(menuState == MenuState.None ? MenuState.Inventory : MenuState.None);
+            SwitchMenuState(menuState == MenuState.None ? MenuState.Inventory : MenuState.None, new GameObject());
         }
 
         public void OnPausedInput(InputAction.CallbackContext context)
@@ -49,13 +49,13 @@ namespace Menu
 
             SwitchMenuState(menuState is MenuState.Pause or MenuState.Inventory or MenuState.RequireInput
                 ? MenuState.None
-                : MenuState.Pause);
+                : MenuState.Pause, new GameObject());
         }
 
-        public void SwitchMenuState(MenuState newMenuState)
+        public void SwitchMenuState(MenuState newMenuState, GameObject panel)
         {
             menuState = newMenuState;
-            OnMenuChange?.Invoke(newMenuState);
+            OnMenuChange?.Invoke(newMenuState, panel);
             
             GameController.CursorVisibility.ChangeChannelPriority(this, CheckPriorities());
             GameController.CursorLockMode.ChangeChannelPriority(this, CheckPriorities());

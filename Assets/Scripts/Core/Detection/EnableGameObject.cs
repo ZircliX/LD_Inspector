@@ -2,30 +2,35 @@ using UnityEngine;
 
 namespace Core.Detection
 {
+    [RequireComponent(typeof(RangeDetection))]
     public class EnableGameObject : MonoBehaviour
     {
         [SerializeField] private GameObject instructions;
+        private RangeDetection rd;
+
+        private void Awake()
+        {
+            rd = GetComponent<RangeDetection>();
+        }
+
+        private void OnEnable()
+        {
+            rd.OnTrigger += ChangeActive;
+        }
 
         private void OnDisable()
         {
             if (!instructions) return;
             
+            rd.OnTrigger -= ChangeActive;
             instructions.SetActive(false);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void ChangeActive(bool state)
         {
-            if (other.CompareTag("Player") && isActiveAndEnabled)
+            if (isActiveAndEnabled)
             {
-                instructions.SetActive(true);
-            }
-        }
-        
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Player") && isActiveAndEnabled)
-            {
-                instructions.SetActive(false);
+                instructions.SetActive(state);
             }
         }
     }

@@ -16,7 +16,7 @@ namespace Menu
             MenuManager.Instance.OnMenuChange -= SwitchState;
         }
 
-        private void SwitchState(MenuManager.MenuState newState)
+        private void SwitchState(MenuManager.MenuState newState, GameObject panel)
         {
             switch (newState)
             {

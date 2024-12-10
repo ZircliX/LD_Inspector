@@ -28,7 +28,7 @@ namespace CyberEnigma.Core.Inventory.Core
 
         public void AddItem(InventoryElement item)
         {
-            Debug.Log($"Added Item : {item.itemGroup}");
+            // Debug.Log($"Added Item : {item.itemGroup}");
             
             PlayerInventory[item.itemGroup].Add(item);
             OnElementAdded?.Invoke(item);
@@ -36,7 +36,7 @@ namespace CyberEnigma.Core.Inventory.Core
 
         public void RemoveItem(InventoryElement item)
         {
-            Debug.Log($"Removed Item : {item.itemGroup}");
+            //Debug.Log($"Removed Item : {item.itemGroup}");
             
             PlayerInventory[item.itemGroup].Remove(item);
             OnElementRemoved?.Invoke(item);
@@ -44,7 +44,7 @@ namespace CyberEnigma.Core.Inventory.Core
 
         public void ShowElementInfos(InventoryElement element)
         {
-            Debug.Log($"Show Item : {element.itemGroup}");
+            //Debug.Log($"Show Item : {element.itemGroup}");
             
             OnElementDisplay?.Invoke(element);
         }
