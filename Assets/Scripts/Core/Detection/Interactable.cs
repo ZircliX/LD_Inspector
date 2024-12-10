@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 namespace Core.Detection
 {
-    [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(EnableGameObject))]
     [RequireComponent(typeof(RangeDetection))]
     [RequireComponent(typeof(ReadInput))]
@@ -29,15 +28,15 @@ namespace Core.Detection
         
         private void OnInput(InputAction.CallbackContext context)
         {
-            if (!rangeScript.isInRange) return;
+            if (!rangeScript.IsInRange) return;
 
-            if (MenuManager.Instance.menuState == MenuManager.MenuState.RequireInput)
+            if (MenuManager.Instance.menuState is MenuManager.MenuState.RequireInput)
             {
-                MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None);
+                MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None, default);
             }
             else
             {
-                MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.RequireInput);
+                MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.RequireInput, codePanel);
             }
         }
     }

@@ -4,8 +4,6 @@ namespace Menu
 {
     public class CodeInputMenu : MonoBehaviour
     {
-        [SerializeField] private GameObject menu;
-        
         private void OnEnable()
         {
             MenuManager.Instance.OnMenuChange += SwitchState;
@@ -16,15 +14,15 @@ namespace Menu
             MenuManager.Instance.OnMenuChange -= SwitchState;
         }
 
-        private void SwitchState(MenuManager.MenuState newState)
+        private void SwitchState(MenuManager.MenuState newState, GameObject panel)
         {
             switch (newState)
             {
                 case MenuManager.MenuState.RequireInput:
-                    menu.SetActive(true);
+                    panel.SetActive(true);
                     break;
                 case MenuManager.MenuState.None:
-                    menu.SetActive(false);
+                    panel.SetActive(false);
                     break;
             }
         }

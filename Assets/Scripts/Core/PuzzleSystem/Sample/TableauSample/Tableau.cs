@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Menu;
 using PuzzleSystem.Core;
+using UnityEngine;
 
 namespace PuzzleSystem.Sample
 {
@@ -18,7 +19,7 @@ namespace PuzzleSystem.Sample
         public override void End(ref TableauContext context, bool isSuccess)
         {
             context.tableau.DOMoveZ(2f, 2f);
-            MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None);
+            MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None, GameObject.Find("TableauCodeInput"));
         }
     }
 }

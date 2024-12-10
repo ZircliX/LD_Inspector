@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 namespace Core.Detection
 {
-    [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(EnableGameObject))]
     [RequireComponent(typeof(RangeDetection))]
     [RequireComponent(typeof(ReadInput))]
@@ -30,7 +29,7 @@ namespace Core.Detection
 
         private void OnCollect(InputAction.CallbackContext context)
         {
-            if (!rangeScript.isInRange) return;
+            if (!rangeScript.IsInRange) return;
             
             Inventory.Instance.AddItem(inventoryElement);
             

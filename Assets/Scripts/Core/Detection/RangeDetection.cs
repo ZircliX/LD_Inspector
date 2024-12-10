@@ -1,16 +1,20 @@
+using System;
 using UnityEngine;
 
 namespace Core.Detection
 {
+    [RequireComponent(typeof(BoxCollider))]
     public class RangeDetection : MonoBehaviour
     {
-        public bool isInRange { get; private set; }
+        public event Action<bool> OnTrigger;
+        public bool IsInRange { get; private set; }
         
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                isInRange = true;
+                IsInRange = true;
+                OnTrigger?.Invoke(IsInRange);
             }
         }
         
@@ -18,7 +22,8 @@ namespace Core.Detection
         {
             if (other.CompareTag("Player"))
             {
-                isInRange = false;
+                IsInRange = false;
+                OnTrigger?.Invoke(IsInRange);
             }
         }
     }
