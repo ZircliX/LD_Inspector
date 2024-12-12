@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Tableau
+  - FlowerPanel
+  - TableauPanel
+  - InstructionsTake
+  - Book
   layers:
   - Default
   - TransparentFX
@@ -15,16 +19,16 @@ TagManager:
   - 
   - 
   - 
+  - Player
   - 
   - 
   - 
   - 
+  - NoPlayer
+  - OnlyPlayer
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - BookHolder
   - 
   - 
   - 

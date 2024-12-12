@@ -20,9 +20,13 @@ namespace CyberEnigma.Core.Inventory.Core
             
             PlayerInventory = new Dictionary<ItemGroup, List<InventoryElement>>
             {
-                { ItemGroup.Key, new List<InventoryElement>() },
                 { ItemGroup.Note, new List<InventoryElement>() },
-                { ItemGroup.Image, new List<InventoryElement>() }
+                { ItemGroup.Image, new List<InventoryElement>() },
+                { ItemGroup.KeyBad, new List<InventoryElement>() },
+                { ItemGroup.KeyGood, new List<InventoryElement>() },
+                { ItemGroup.Book1, new List<InventoryElement>() },
+                { ItemGroup.Book2, new List<InventoryElement>() },
+                { ItemGroup.Book3, new List<InventoryElement>() },
             };
         }
 
@@ -39,6 +43,7 @@ namespace CyberEnigma.Core.Inventory.Core
             //Debug.Log($"Removed Item : {item.itemGroup}");
             
             PlayerInventory[item.itemGroup].Remove(item);
+            Instantiate(item.itemPrefab, transform.position, Quaternion.identity);
             OnElementRemoved?.Invoke(item);
         }
 

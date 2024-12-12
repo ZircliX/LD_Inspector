@@ -10,7 +10,7 @@ namespace Core.Detection
     [RequireComponent(typeof(ReadInput))]
     public class Collectable : MonoBehaviour
     {
-        [SerializeField] private InventoryElement inventoryElement;
+        [field : SerializeField] public InventoryElement inventoryElement { get; private set; }
         private RangeDetection rangeScript;
         private ReadInput inputScript;
 

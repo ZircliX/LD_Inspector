@@ -34,7 +34,7 @@ namespace CyberEnigma.Core.Inventory.Core
 
         private void AddElement(InventoryElement element)
         {
-            Debug.Log($"Instantiate element : {element.itemGroup}");
+            //Debug.Log($"Instantiate element : {element.itemGroup}");
             
             InventoryItemUI newItem = Instantiate(itemPrefab, content);
             newItem.SyncData(element);
@@ -44,17 +44,20 @@ namespace CyberEnigma.Core.Inventory.Core
 
         private void RemoveElement(InventoryElement element)
         {
-            if (itemsUI.Remove(element))
+            if (itemsUI.TryGetValue(element, out InventoryItemUI value))
             {
-                Debug.Log($"Delete element : {element.itemGroup}");
+                Destroy(value.gameObject);
+                itemsUI.Remove(element);
+                
+                //Debug.Log($"Delete element : {element.itemGroup}");
                 return;
             }
-            Debug.Log("Element does not exist");
+            //Debug.Log("Element does not exist");
         }
 
         private void DisplayElement(InventoryElement element)
         {
-            Debug.Log($"Display element : {element.itemGroup}");
+            //Debug.Log($"Display element : {element.itemGroup}");
             
             image.sprite = element.itemImage;
         }

@@ -2,8 +2,12 @@ namespace CyberEnigma.Core.Inventory.Core.Data
 {
     public enum ItemGroup
     {
-        Key,
         Note,
-        Image
+        Image,
+        KeyGood,
+        KeyBad,
+        Book1,
+        Book2,
+        Book3
     }
 }
