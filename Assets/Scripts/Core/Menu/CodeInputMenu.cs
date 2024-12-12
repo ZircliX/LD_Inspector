@@ -22,6 +22,7 @@ namespace Menu
                     panel.SetActive(true);
                     break;
                 case MenuManager.MenuState.None:
+                    if (panel.name == "Canvas") return;
                     panel.SetActive(false);
                     break;
             }

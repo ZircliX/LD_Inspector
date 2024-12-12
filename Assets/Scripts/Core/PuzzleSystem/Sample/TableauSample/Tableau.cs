@@ -18,7 +18,7 @@ namespace PuzzleSystem.Sample
 
         public override void End(ref TableauContext context, bool isSuccess)
         {
-            context.tableau.DOMoveZ(2f, 2f);
+            context.tableau.DOMoveZ(1.5f, 2f);
             MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None, GameObject.Find("TableauCodeInput"));
         }
     }

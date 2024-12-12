@@ -13,7 +13,14 @@ namespace CyberEnigma.Core.Inventory.Core
         
         public void OnPointerClick(PointerEventData eventData)
         {
-            Inventory.Instance.ShowElementInfos(element);
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                Inventory.Instance.RemoveItem(element);
+            }
+            else
+            {
+                Inventory.Instance.ShowElementInfos(element);
+            }
         }
 
         public void SyncData(InventoryElement itemData)

@@ -40,7 +40,7 @@ namespace Menu
         {
             if (!context.performed) return;
 
-            SwitchMenuState(menuState == MenuState.None ? MenuState.Inventory : MenuState.None, new GameObject());
+            SwitchMenuState(menuState == MenuState.None ? MenuState.Inventory : MenuState.None, gameObject);
         }
 
         public void OnPausedInput(InputAction.CallbackContext context)
@@ -49,7 +49,7 @@ namespace Menu
 
             SwitchMenuState(menuState is MenuState.Pause or MenuState.Inventory or MenuState.RequireInput
                 ? MenuState.None
-                : MenuState.Pause, new GameObject());
+                : MenuState.Pause, gameObject);
         }
 
         public void SwitchMenuState(MenuState newMenuState, GameObject panel)

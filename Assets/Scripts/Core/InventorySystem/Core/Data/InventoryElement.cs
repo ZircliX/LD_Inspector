@@ -7,5 +7,6 @@ namespace CyberEnigma.Core.Inventory.Core.Data
     {
         public ItemGroup itemGroup;
         public Sprite itemImage;
+        public GameObject itemPrefab;
     }
 }
