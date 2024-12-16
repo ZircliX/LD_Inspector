@@ -9,6 +9,8 @@ TagManager:
   - TableauPanel
   - InstructionsTake
   - Book
+  - BadKey
+  - GoodKey
   layers:
   - Default
   - TransparentFX
