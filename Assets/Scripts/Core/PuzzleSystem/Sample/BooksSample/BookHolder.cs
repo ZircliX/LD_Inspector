@@ -34,7 +34,7 @@ namespace PuzzleSystem.Sample
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.CompareTag("Book")) return;
+            if (!other.CompareTag("Book") || currentItem == null) return;
             
             currentItem.GetComponent<Rigidbody>().isKinematic = false;
             currentItem = null;

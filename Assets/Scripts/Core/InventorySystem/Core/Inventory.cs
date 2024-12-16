@@ -22,11 +22,26 @@ namespace CyberEnigma.Core.Inventory.Core
             {
                 { ItemGroup.Note, new List<InventoryElement>() },
                 { ItemGroup.Image, new List<InventoryElement>() },
-                { ItemGroup.KeyBad, new List<InventoryElement>() },
-                { ItemGroup.KeyGood, new List<InventoryElement>() },
+                
                 { ItemGroup.Book1, new List<InventoryElement>() },
                 { ItemGroup.Book2, new List<InventoryElement>() },
                 { ItemGroup.Book3, new List<InventoryElement>() },
+                
+                { ItemGroup.KeyBad1, new List<InventoryElement>() },
+                { ItemGroup.KeyBad2, new List<InventoryElement>() },
+                { ItemGroup.KeyBad3, new List<InventoryElement>() },
+                { ItemGroup.KeyBad4, new List<InventoryElement>() },
+                { ItemGroup.KeyBad5, new List<InventoryElement>() },
+                { ItemGroup.KeyBad6, new List<InventoryElement>() },
+                { ItemGroup.KeyBad7, new List<InventoryElement>() },
+                
+                { ItemGroup.KeyGood1, new List<InventoryElement>() },
+                { ItemGroup.KeyGood2, new List<InventoryElement>() },
+                { ItemGroup.KeyGood3, new List<InventoryElement>() },
+                { ItemGroup.KeyGood4, new List<InventoryElement>() },
+                { ItemGroup.KeyGood5, new List<InventoryElement>() },
+                { ItemGroup.KeyGood6, new List<InventoryElement>() },
+                { ItemGroup.KeyGood7, new List<InventoryElement>() },
             };
         }
 

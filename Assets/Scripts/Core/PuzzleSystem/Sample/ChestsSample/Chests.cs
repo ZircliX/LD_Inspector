@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace PuzzleSystem.Sample
 {
-    public class Books : Puzzle<BooksContext>
+    public class Chests : Puzzle<ChestsContext>
     {
-        public override void Begin(ref BooksContext context)
+        public override void Begin(ref ChestsContext context)
         {
+            
         }
 
-        public override bool Refresh(ref BooksContext context)
+        public override bool Refresh(ref ChestsContext context)
         {
             for (int i = 0; i < context.holders.Length; i++)
             {
@@ -22,9 +23,9 @@ namespace PuzzleSystem.Sample
             return true;
         }
 
-        public override void End(ref BooksContext context, bool isSuccess)
+        public override void End(ref ChestsContext context, bool isSuccess)
         {
-            //Debug.Log("Book Puzzle Ended");
+            Debug.Log("Chests Puzzle Ended");
         }
     }
 }
