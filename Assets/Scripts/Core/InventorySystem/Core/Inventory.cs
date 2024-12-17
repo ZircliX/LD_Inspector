@@ -26,6 +26,8 @@ namespace CyberEnigma.Core.Inventory.Core
                 { ItemGroup.Book1, new List<InventoryElement>() },
                 { ItemGroup.Book2, new List<InventoryElement>() },
                 { ItemGroup.Book3, new List<InventoryElement>() },
+                { ItemGroup.Book4, new List<InventoryElement>() },
+                { ItemGroup.Book5, new List<InventoryElement>() },
                 
                 { ItemGroup.KeyBad1, new List<InventoryElement>() },
                 { ItemGroup.KeyBad2, new List<InventoryElement>() },

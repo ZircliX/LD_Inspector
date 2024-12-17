@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a79b569aa455b4589a294d65ecd2c9, type: 3}
   m_Name: GoodKey 6
   m_EditorClassIdentifier: 
-  itemGroup: 11
+  itemGroup: 13
   itemImage: {fileID: 21300000, guid: 69ffda6c511b372408c2a2db4e2ad15e, type: 3}
   itemPrefab: {fileID: 4924077688549159575, guid: 5463236c4f9814f4dae2c499000ee3ce, type: 3}

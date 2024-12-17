@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43a79b569aa455b4589a294d65ecd2c9, type: 3}
-  m_Name: Note
+  m_Name: Book5
   m_EditorClassIdentifier: 
-  itemGroup: 1
-  itemImage: {fileID: 21300000, guid: e0239a3c2a2bf8e4a84a35759ea0bcef, type: 3}
+  itemGroup: 6
+  itemImage: {fileID: 21300000, guid: 388ba09fba8213a44accac5e10ddb019, type: 3}
+  itemPrefab: {fileID: 1006312455444323641, guid: a4f797ac71088ec4b9cc0c5c66e6e74a, type: 3}

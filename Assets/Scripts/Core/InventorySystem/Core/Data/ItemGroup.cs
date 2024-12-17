@@ -8,6 +8,8 @@ namespace CyberEnigma.Core.Inventory.Core.Data
         Book1,
         Book2,
         Book3,
+        Book4,
+        Book5,
         
         KeyGood1,
         KeyGood2,

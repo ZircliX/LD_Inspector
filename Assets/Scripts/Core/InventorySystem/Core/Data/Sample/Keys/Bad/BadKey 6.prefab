@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 1348493128698382627}
   m_Layer: 14
   m_Name: GameObject
-  m_TagString: Book
+  m_TagString: BadKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

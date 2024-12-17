@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a79b569aa455b4589a294d65ecd2c9, type: 3}
   m_Name: Book2
   m_EditorClassIdentifier: 
-  itemGroup: 5
-  itemImage: {fileID: 2750705142841656183, guid: 4dffe6eab57ca4e4ba2f967307bd1c29, type: 3}
+  itemGroup: 3
+  itemImage: {fileID: 21300000, guid: c5b7fab57575fcb4d9da8831b834e78a, type: 3}
   itemPrefab: {fileID: 1404458550953046509, guid: bd808a3453e0d9b45aee091904478c9c, type: 3}
