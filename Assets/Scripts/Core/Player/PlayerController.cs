@@ -27,6 +27,8 @@ namespace CyberEnigma.Core.Player
             //Ajout channel
             GameController.CursorVisibility.AddPriority(this, PriorityTags.Smallest, false);
             GameController.CursorLockMode.AddPriority(this, PriorityTags.Smallest, CursorLockMode.Locked);
+            
+            GameController.TimeScale.AddPriority(this, PriorityTags.High, 1f);
         }
 
         private void OnDisable()
@@ -34,6 +36,8 @@ namespace CyberEnigma.Core.Player
             //Enlever channel
             GameController.CursorVisibility.RemovePriority(this);
             GameController.CursorLockMode.RemovePriority(this);
+            
+            GameController.TimeScale.RemovePriority(this);
         }
 
         private void LateUpdate()

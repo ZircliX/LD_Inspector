@@ -64,7 +64,7 @@ namespace Menu
 
         private PriorityTags CheckPriorities()
         {
-            return menuState == MenuState.None ? PriorityTags.None : PriorityTags.High;
+            return menuState == MenuState.None ? PriorityTags.None : PriorityTags.Highest;
         }
     }
 }

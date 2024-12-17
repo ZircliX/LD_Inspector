@@ -49,11 +49,13 @@ namespace CyberEnigma.Core.Player
         public void OnLookX(InputAction.CallbackContext context)
         {
             targetCamVelocity.y = context.ReadValue<float>() * xModifier;
+            Debug.Log("OnLookX");
         }
 
         public void OnLookY(InputAction.CallbackContext context)
         {
             targetCamVelocity.x = context.ReadValue<float>() * yModifier;
+            Debug.Log("OnLookY");
         }
         //--------//
     }

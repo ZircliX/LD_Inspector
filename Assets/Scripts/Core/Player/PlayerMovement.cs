@@ -48,11 +48,14 @@ namespace CyberEnigma.Core.Player
 
             isMoving = input.sqrMagnitude != 0;
             targetVelocity = input * speed;
+            Debug.Log("OnMoveInput");
+
         }
 
         public void OnSprintInput(InputAction.CallbackContext context)
         {
             isRunning = context.phase == InputActionPhase.Performed;
+            Debug.Log("OnSprint");
         }
     }
 }
