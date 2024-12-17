@@ -1,5 +1,4 @@
 using PuzzleSystem.Core;
-using UnityEngine;
 
 namespace PuzzleSystem.Sample
 {
@@ -24,7 +23,7 @@ namespace PuzzleSystem.Sample
 
         public override void End(ref BooksContext context, bool isSuccess)
         {
-            //Debug.Log("Book Puzzle Ended");
+            context.key.SetActive(true);
         }
     }
 }

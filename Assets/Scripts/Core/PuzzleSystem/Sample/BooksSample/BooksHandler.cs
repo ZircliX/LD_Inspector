@@ -7,6 +7,7 @@ namespace PuzzleSystem.Sample
     {
         [SerializeField] private MonoBehaviour[] booksScripts;
         [SerializeField] private BookHolder[] holders;
+        [SerializeField] private GameObject key;
 
         private Books booksPuzzle;
         
@@ -22,6 +23,7 @@ namespace PuzzleSystem.Sample
 
         private void Start()
         {
+            key.SetActive(false);
             booksPuzzle = new Books();
             PuzzleManager.Instance.StartPuzzle(booksPuzzle, this);
         }
@@ -41,6 +43,7 @@ namespace PuzzleSystem.Sample
             return new BooksContext
             {
                 holders = holders,
+                key = key
             };
         }
     }

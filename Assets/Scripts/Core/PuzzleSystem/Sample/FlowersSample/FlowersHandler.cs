@@ -9,6 +9,7 @@ namespace PuzzleSystem.Sample
         [SerializeField] private MonoBehaviour[] flowersScripts;
         
         [SerializeField] private Transform chest;
+        [SerializeField] private GameObject key;
         [SerializeField] private TMP_InputField codeInput;
         [SerializeField] private string code;
         
@@ -26,6 +27,7 @@ namespace PuzzleSystem.Sample
 
         private void Start()
         {
+            key.SetActive(false);
             flowersPuzzle = new Flowers();
             PuzzleManager.Instance.StartPuzzle(flowersPuzzle, this);
         }
@@ -46,7 +48,8 @@ namespace PuzzleSystem.Sample
             {
                 codeInput = codeInput,
                 chest = chest,
-                code = code
+                code = code,
+                key = key
             };
         }
     }
