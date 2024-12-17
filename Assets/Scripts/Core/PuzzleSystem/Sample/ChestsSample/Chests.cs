@@ -25,7 +25,7 @@ namespace PuzzleSystem.Sample
 
         public override void End(ref ChestsContext context, bool isSuccess)
         {
-            Debug.Log("Chests Puzzle Ended");
+            context.door.SetActive(false);
         }
     }
 }

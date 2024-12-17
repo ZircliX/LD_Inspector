@@ -8,6 +8,7 @@ namespace PuzzleSystem.Sample
     {
         public TMP_InputField codeInput;
         public Transform chest;
+        public GameObject key;
         public string code;
     }
 }

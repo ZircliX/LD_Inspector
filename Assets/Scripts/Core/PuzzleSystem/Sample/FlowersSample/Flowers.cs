@@ -19,6 +19,7 @@ namespace PuzzleSystem.Sample
         public override void End(ref FlowersContext context, bool isSuccess)
         {
             context.chest.DORotate(new Vector3(0, -100, 0), 2f);
+            context.key.SetActive(true);
             MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None, GameObject.Find("FlowersCodeInput"));
         }
     }

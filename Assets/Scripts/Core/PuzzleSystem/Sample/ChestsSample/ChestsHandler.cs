@@ -7,6 +7,7 @@ namespace PuzzleSystem.Sample
     {
         [SerializeField] private MonoBehaviour[] chestsScripts;
         [SerializeField] private ChestHolder[] holders;
+        [SerializeField] private GameObject door;
         
         private Chests flowersPuzzle;
         
@@ -41,6 +42,7 @@ namespace PuzzleSystem.Sample
             return new ChestsContext
             {
                 holders = holders,
+                door = door,
             };
         }
     }
