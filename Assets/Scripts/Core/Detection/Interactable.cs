@@ -32,7 +32,7 @@ namespace Core.Detection
 
             if (MenuManager.Instance.menuState is MenuManager.MenuState.RequireInput)
             {
-                MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None, default);
+                MenuManager.Instance.SwitchMenuState(MenuManager.MenuState.None, codePanel);
             }
             else
             {

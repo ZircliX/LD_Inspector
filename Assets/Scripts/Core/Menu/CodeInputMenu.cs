@@ -4,6 +4,8 @@ namespace Menu
 {
     public class CodeInputMenu : MonoBehaviour
     {
+        private GameObject currentPanel;
+        
         private void OnEnable()
         {
             MenuManager.Instance.OnMenuChange += SwitchState;
@@ -20,10 +22,15 @@ namespace Menu
             {
                 case MenuManager.MenuState.RequireInput:
                     panel.SetActive(true);
+                    currentPanel = panel;
                     break;
                 case MenuManager.MenuState.None:
-                    if (panel.name == "Canvas") return;
-                    panel.SetActive(false);
+                    if (panel.name == "Canvas" || currentPanel == null) return;
+                    
+                    currentPanel.SetActive(false);
+                    currentPanel = null;
+                    
+                    Debug.Log("Input menu active false");
                     break;
             }
         }
